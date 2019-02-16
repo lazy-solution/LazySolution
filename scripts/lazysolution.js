@@ -1,4 +1,4 @@
-﻿var LazySolution = new function LazySolution() {
+﻿var LazySolution = new function () {
 
     var version = "1.0";
 
@@ -52,41 +52,43 @@
     };
 
     //Bootstrap 4 Component
-    //Alert -- Return HTML Format
+    //Display Alert in Container Initialized
     this.Alert = new function () {
-        //Genearate HTML for bootstrap alert
-        var Initialize = function (message, type) {
-            return "<div class=\"alert alert-" + type + " alert-dismissible fade show\" role=\"alert\">" +
+        var Initialize = function (message, container, type) {
+            //Default container id: divAlert
+            var alertContainer = (container) ? container : $("#divAlert");
+            //Create HTML content
+            var alertContent = "<div class=\"alert alert-" + type + " alert-dismissible fade show\" role=\"alert\">" +
                 message +
                 "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
                 "<span aria-hidden=\"true\">&times;</span>" +
                 "</button>" +
                 "</div>";
+            alertContainer.html(alertContent);
         };
-        //Alert types
-        this.Primary = function (message) {
-            return Initialize(message, "primary");
+        this.Primary = function (message, container) {
+            return Initialize(message, container, "primary");
         };
-        this.Secondary = function (message) {
-            return Initialize(message, "secondary");
+        this.Secondary = function (message, container) {
+            return Initialize(message, container, "secondary");
         };
-        this.Success = function (message) {
-            return Initialize(message, "success");
+        this.Success = function (message, container) {
+            return Initialize(message, container, "success");
         };
-        this.Danger = function (message) {
-            return Initialize(message, "danger");
+        this.Danger = function (message, container) {
+            return Initialize(message, container, "danger");
         };
-        this.Warning = function (message) {
-            return Initialize(message, "warning");
+        this.Warning = function (message, container) {
+            return Initialize(message, container, "warning");
         };
-        this.Info = function (message) {
-            return Initialize(message, "info");
+        this.Info = function (message, container) {
+            return Initialize(message, container, "info");
         };
-        this.Light = function (message) {
-            return Initialize(message, "light");
+        this.Light = function (message, container) {
+            return Initialize(message, container, "light");
         };
-        this.Dark = function (message) {
-            return Initialize(message, "dark");
+        this.Dark = function (message, container) {
+            return Initialize(message, container, "dark");
         };
     };
 
@@ -300,5 +302,5 @@
             notification.show(message, "error");
         };
     };
-}
+};
 
